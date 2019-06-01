@@ -1,0 +1,8 @@
+version: '2.1'
+
+services:
+  mongo-tools-docker:
+    image: mongo-tools-docker
+    build: .
+    ports:
+      - :
