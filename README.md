@@ -1,7 +1,7 @@
 # Docker Files To Build calebHankins's mongo-tools Fork
 
-[![Docker Cloud Automated build](https://img.shields.io/docker/cloud/automated/calebhankins/mongo-tools.svg?style=flat-square)](https://hub.docker.com/r/calebhankins/mongo-tools/builds)
-[![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/calebhankins/mongo-tools.svg?style=flat-square)](https://hub.docker.com/r/calebhankins/mongo-tools/builds)
+[![Docker Cloud Automated build](https://img.shields.io/docker/cloud/automated/calebhankins/mongo-tools.svg?style=flat-square)](https://hub.docker.com/r/calebhankins/mongo-tools/)
+[![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/calebhankins/mongo-tools.svg?style=flat-square)](https://hub.docker.com/r/calebhankins/mongo-tools/)
 
 This repo builds the [calebHankins/mongo-tools](https://github.com/calebHankins/mongo-tools) fork that implements these changes:
 - [TOOLS-1954 enhanced csv array notation](https://github.com/mongodb/mongo-tools/pull/110)
