@@ -1,6 +1,6 @@
 #build stage
 ARG BASE_GIT_REPO_URL=https://github.com/calebHankins/mongo-tools.git
-FROM golang:alpine AS builder
+FROM golang:1.8.7-alpine3.6 AS builder
 ARG BASE_GIT_REPO_URL=https://github.com/calebHankins/mongo-tools.git
 RUN apk add --no-cache git bash gcc libc-dev openssl-dev cyrus-sasl-dev
 WORKDIR /go/src/app
@@ -8,7 +8,7 @@ RUN git clone ${BASE_GIT_REPO_URL} .
 RUN ./build.sh ssl sasl
 
 #final stage
-FROM alpine:latest
+FROM alpine:3.6
 RUN apk --no-cache add ca-certificates
 RUN apk add --no-cache openssl cyrus-sasl
 COPY --from=builder /go/src/app/bin /mongo-tools
