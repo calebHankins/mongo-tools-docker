@@ -1,8 +1,10 @@
 #build stage
+ARG BASE_GIT_REPO_URL=https://github.com/calebHankins/mongo-tools.git
 FROM golang:alpine AS builder
+ARG BASE_GIT_REPO_URL=https://github.com/calebHankins/mongo-tools.git
 RUN apk add --no-cache git bash gcc libc-dev openssl-dev cyrus-sasl-dev
 WORKDIR /go/src/app
-RUN git clone https://github.com/calebHankins/mongo-tools.git .
+RUN git clone ${BASE_GIT_REPO_URL} .
 RUN ./build.sh ssl sasl
 
 #final stage
