@@ -2,8 +2,7 @@ name: ci
 
 on:
   push:
-    branches:
-      - '**'
+    branches: ['main','master']
     tags:
       - '*.*.*'
 
@@ -58,5 +57,3 @@ jobs:
             platforms: linux/amd64,linux/arm64
             tags: ${{ steps.meta.outputs.tags }}
             labels: ${{ steps.meta.outputs.labels }}
-            cache-from: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/${{ steps.repo-name.outputs.value }}:buildcache
-            cache-to: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/${{ steps.repo-name.outputs.value }}:buildcache,mode=max
