@@ -13,6 +13,7 @@ FROM alpine
 RUN apk --no-cache add ca-certificates
 RUN apk add --no-cache openssl cyrus-sasl
 COPY --from=builder /go/src/app/bin /mongo-tools
+RUN ./mongoimport --version
 WORKDIR /mongo-tools
 LABEL Name=mongo-tools
 
