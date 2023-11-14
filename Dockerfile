@@ -11,7 +11,7 @@ RUN ./make build
 #final stage
 FROM alpine
 RUN apk --no-cache add ca-certificates
-RUN apk add --no-cache openssl cyrus-sasl
+RUN apk add --no-cache openssl cyrus-sasl krb5
 COPY --from=builder /go/src/app/bin /mongo-tools
 WORKDIR /mongo-tools
 RUN ./mongoimport --version
