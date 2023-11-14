@@ -1,7 +1,9 @@
 #build stage
 ARG BASE_GIT_REPO_URL=https://github.com/calebHankins/mongo-tools.git
+ARG GIT_COMMIT_HASH=dc40a10
 FROM golang:1.8.7-alpine3.6 AS builder
 ARG BASE_GIT_REPO_URL=https://github.com/calebHankins/mongo-tools.git
+ARG GIT_COMMIT_HASH=dc40a10
 RUN apk add --no-cache git bash gcc libc-dev openssl-dev cyrus-sasl-dev
 WORKDIR /go/src/app
 RUN git clone ${BASE_GIT_REPO_URL} .
@@ -13,6 +15,7 @@ RUN apk --no-cache add ca-certificates
 RUN apk add --no-cache openssl cyrus-sasl
 COPY --from=builder /go/src/app/bin /mongo-tools
 WORKDIR /mongo-tools
+RUN ./mongoimport --version
 LABEL Name=mongo-tools
 
 # debian version
