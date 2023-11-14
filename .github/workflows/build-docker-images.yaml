@@ -39,11 +39,17 @@ jobs:
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v1
-      -
-        name: Set up Docker Buildx
+      - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
-      -
-        name: Build
+
+      - name: Cache Docker layers
+        uses: actions/cache@v2
+        with:
+          path: ~/.docker/_buildx/**
+          key: ${{ runner.os }}-buildx-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-buildx-
+      - name: Build
         uses: docker/build-push-action@v2
         with:
             context: .
