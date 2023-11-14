@@ -5,7 +5,8 @@ ARG BASE_GIT_REPO_URL=https://github.com/mongodb/mongo-tools.git
 RUN apk add --no-cache git bash gcc libc-dev openssl-dev cyrus-sasl-dev
 WORKDIR /go/src/app
 RUN git clone ${BASE_GIT_REPO_URL} .
-RUN ./build.sh ssl sasl
+# RUN ./build.sh ssl sasl
+RUN ./make build
 
 #final stage
 FROM alpine
