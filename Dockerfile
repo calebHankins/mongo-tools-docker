@@ -1,10 +1,11 @@
 #build stage
 ARG BASE_GIT_REPO_URL=https://github.com/mongodb/mongo-tools.git
+ARG GIT_COMMIT_HASH=df997aa
 FROM golang:alpine AS builder
-ARG BASE_GIT_REPO_URL=https://github.com/mongodb/mongo-tools.git
 RUN apk add --no-cache git bash gcc libc-dev openssl-dev cyrus-sasl-dev krb5-dev
 WORKDIR /go/src/app
 RUN git clone ${BASE_GIT_REPO_URL} .
+RUN git checkout ${GIT_COMMIT_HASH}
 # RUN ./build.sh ssl sasl
 RUN ./make build
 
